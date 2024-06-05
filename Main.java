@@ -17,13 +17,16 @@ class Main{
                     deletelist();
                     break;
                 case 3:
-                    listprint();
+                    search();
                     break;
                 case 4:
+                    listprint();
                     break;
                 case 5:
-                    System.out.println("пока");
-                    System.exit(0);
+                    changestatus();
+                    break;
+                case 6:
+                    exit();
                     break;
                 default:
                     System.out.println("ещё раз");
@@ -34,11 +37,13 @@ class Main{
     public static void menu() {
         System.out.println("1. Добавить");
         System.out.println("2. Удалить");
-        System.out.println("3. Вывести");
-        System.out.println("4. Изменить статус");
-        System.out.println("5. Выход");
+        System.out.println("3. Поиск");
+        System.out.println("4. Вывести");
+        System.out.println("5. Изменить статус");
+        System.out.println("6. Выход");
         System.out.println("Choice: ");
     }
+
     public static void addlist(){
         System.out.println("Введите данные:");
         System.out.println("Имя, автор, код");
@@ -53,9 +58,34 @@ class Main{
         String name = s.nextLine();
         manager.deletelist(name);
     }
+
+    public static void search(){
+        System.out.println("Введите название: ");
+        String name = s.nextLine();
+        String result = String.valueOf(manager.returns(name));
+        System.out.println(result);
+    }
+
     public static void listprint(){
         manager.listprint();
     }
+
+    public static void changestatus(){
+        System.out.println("Введите имя пользователя: ");
+        String nameuser = s.nextLine();
+        System.out.println("Введите название книги: ");
+        String name = s.nextLine();
+        System.out.println("Введите статус");
+        Boolean status = Boolean.parseBoolean(s.nextLine());
+        manager.changestatus(name, status);
+        System.out.println("Успешно");
+    }
+
+    public static void exit(){
+        System.out.println("пока");
+        System.exit(0);
+    }
+
 
 
 }

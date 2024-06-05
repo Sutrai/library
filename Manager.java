@@ -10,27 +10,35 @@ public class Manager {
         this.list = new ArrayList<>();
     }
 
+    public void listadd(Library library){
+        list.add(library);
+    } // добавить в лист
+
     public void deletelist(String name){
         list.removeIf(book -> book.getName().equals(name));
+    } // удалить из листа
+
+    public void listprint(){
+        for(Library books: list){
+            System.out.println(books); // вывести полный список
+        }
+    }
+
+    public void changestatus(String name, boolean status){
+        Library library = returns(name);
+        if (library!= null){
+            library.setStatus(status);
+        }
     }
 
     public Library returns(String name){
         for (Library books: list){
             if (books.getName().equals(name)){
-                return books;
+                return books; // возращения книги из списка
             }
         }
+        System.out.println("не найдено");
         return null;
-    }
-
-    public void listadd(Library library){
-        list.add(library);
-    }
-
-    public void listprint(){
-        for(Library books: list){
-            System.out.println(books);
-        }
     }
 
 }
