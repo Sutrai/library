@@ -1,3 +1,5 @@
+import jdk.management.jfr.FlightRecorderMXBean;
+
 import java.util.Scanner;
 
 class Main{
@@ -49,7 +51,7 @@ class Main{
         System.out.println("Имя, автор, код");
         String input = s.nextLine();
         String[] book = input.split(",");
-        Library library = new Library(book[0].toString(), book[1].toString(), book[2].toString(), false);
+        Library library = new Library(book[0].trim(), book[1].trim(), book[2].trim(), false);
         manager.listadd(library);
     }
 
@@ -71,14 +73,25 @@ class Main{
     }
 
     public static void changestatus(){
-        System.out.println("Введите имя пользователя: ");
-        String nameuser = s.nextLine();
         System.out.println("Введите название книги: ");
         String name = s.nextLine();
-        System.out.println("Введите статус");
-        Boolean status = Boolean.parseBoolean(s.nextLine());
-        manager.changestatus(name, status);
-        System.out.println("Успешно");
+        Library library = manager.returns(name);
+        if (library!=null) {
+
+            System.out.println("Введите статус (true/false)");
+            Boolean status = Boolean.parseBoolean(s.nextLine());
+
+            if (status) {
+                System.out.println("Введите имя пользователя: ");
+                String nameuser = s.nextLine();
+                manager.changestatus(name, status, nameuser);
+                System.out.println("Пользователь добавлен");
+            } else {
+                manager.changestatus(name, status, "false");
+                System.out.println("Пользователь удалён");
+            }
+        }
+
     }
 
     public static void exit(){

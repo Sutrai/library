@@ -4,12 +4,14 @@ public class Library {
     private String author;
     private String code;
     private boolean status;
+    private String user;
 
     public Library(String name, String author, String code, boolean status) {
         this.name = name;
         this.author = author;
         this.code = code;
         this.status = status;
+        this.user = "None";
     }
 
     public String getName() {
@@ -44,13 +46,14 @@ public class Library {
         this.status = status;
     }
 
+    public void setUser(String user) {this.user = user;}
+    public String getUser() {return user;}
+
+
     @Override
     public String toString() {
-        return "Library{" +
-                "name='" + name + '\'' +
-                ", author='" + author + '\'' +
-                ", code='" + code + '\'' +
+        return "name='" + name + '\'' + ", author='" + author + '\'' + ", code='" + code + '\'' +
                 ", status=" + status +
-                '}';
+                ", user=" + user;
     }
 }

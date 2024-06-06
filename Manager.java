@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +25,15 @@ public class Manager {
         }
     }
 
-    public void changestatus(String name, boolean status){
+    public void changestatus(String name, boolean status, String nameuser){
         Library library = returns(name);
         if (library!= null){
             library.setStatus(status);
+            if (status){
+                LocalDate date = LocalDate.now();
+                library.setUser(nameuser + " // " + date);
+            }
+
         }
     }
 
