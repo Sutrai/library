@@ -32,6 +32,8 @@ public class Manager {
             if (status){
                 LocalDate date = LocalDate.now();
                 library.setUser(nameuser + " // " + date);
+            } else{
+                library.setUser("None");
             }
 
         }

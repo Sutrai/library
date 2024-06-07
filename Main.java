@@ -9,7 +9,13 @@ class Main{
     public static void main(String[] args){
         while (true){
             menu();
-            int choice = Integer.parseInt(s.nextLine());
+            int choice =  0;
+
+            try {
+                choice = Integer.parseInt(s.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Ещё раз");
+            }
 
             switch (choice) {
                 case 1:
@@ -58,7 +64,10 @@ class Main{
     public static void deletelist(){
         System.out.println("Введите имя файла:");
         String name = s.nextLine();
-        manager.deletelist(name);
+        Library library = manager.returns(name);
+        if (library!=null) {
+            manager.deletelist(name);
+        }
     }
 
     public static void search(){
@@ -86,7 +95,8 @@ class Main{
                 String nameuser = s.nextLine();
                 manager.changestatus(name, status, nameuser);
                 System.out.println("Пользователь добавлен");
-            } else {
+
+            } else if (!status){
                 manager.changestatus(name, status, "false");
                 System.out.println("Пользователь удалён");
             }
