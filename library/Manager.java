@@ -1,3 +1,5 @@
+package library;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +15,15 @@ public class Manager {
 
     public void listadd(Library library){
         list.add(library);
-    } // добавить в лист
+    }
 
     public void deletelist(String name){
         list.removeIf(book -> book.getName().equals(name));
-    } // удалить из листа
+    }
 
     public void listprint(){
         for(Library books: list){
-            System.out.println(books); // вывести полный список
+            System.out.println(books);
         }
     }
 
@@ -42,7 +44,7 @@ public class Manager {
     public Library returns(String name){
         for (Library books: list){
             if (books.getName().equals(name)){
-                return books; // возращения книги из списка
+                return books;
             }
         }
         System.out.println("не найдено");

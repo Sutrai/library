@@ -1,13 +1,14 @@
-import jdk.management.jfr.FlightRecorderMXBean;
+package library;
 
 import java.util.Scanner;
 
-class Main{
+public class Main{
     private static Scanner s = new Scanner(System.in);
     private static Manager manager = new Manager();
-
+    private static boolean exit = false;
     public static void main(String[] args){
-        while (true){
+
+        while (!exit){
             menu();
             int choice =  0;
 
@@ -106,9 +107,7 @@ class Main{
 
     public static void exit(){
         System.out.println("пока");
-        System.exit(0);
+        exit = true;
     }
-
-
 
 }
