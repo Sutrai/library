@@ -34,7 +34,7 @@ public class Main{
                 case 5:
                     changestatus();
                     break;
-                case 6:
+                case 6 :
                     exit();
                     break;
                 default:

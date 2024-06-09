@@ -6,28 +6,28 @@ public class MainMenu {
     public static void main(String[] args) {
 
         while (!exit) {
-            System.out.println("1. Библиотека");
-            System.out.println("2. хз пока");
-            System.out.println("0. Выход");
-            System.out.println("Choice: ");
+            System.out.println("\n< МЕНЮ >");
+            System.out.println("- 1.  > библиотека");
+            System.out.println("- 2.  > калькулятор");
+            System.out.println("- q.  > выход из программы");
 
-            int choice = scanner.nextInt();
+            char choice = scanner.next().charAt(0);
 
             switch (choice) {
-                case 1:
+                case '1':
                     library.Main.main(null);
                     break;
-                case 2:
+                case '2':
                     calculator.Main.main(null);
                     break;
-                case 0:
+                case 'q':
                     System.out.println("Выход");
                     exit = true;
                     break;
-                default:
-                    System.out.println("цифру нада");
-            }
-        }
+        default:
+        System.out.println("ОШИБКА --> Неизвестный выбор");
+    }
+}
 
         scanner.close();
     }
